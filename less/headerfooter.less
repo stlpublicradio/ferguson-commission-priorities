@@ -1,0 +1,276 @@
+/* CSS Document */
+@import "less/variables";
+
+/* HEADER STYLES */
+
+#stlpr-header,
+#stlpr-footer {
+	font-family: 'Titillium Web';
+}
+
+#stlpr-header {
+
+	.redbar {	
+		background-color: @stlpr-red;
+		height: 32px;
+		font-size: 14px;
+		text-decoration: none;
+		text-align: left;
+		padding-top: 3px;
+		font-weight: 700;
+
+		.barcontent {	
+			margin: auto;
+			width: 100%;
+		}
+
+		a {
+			color: #fff;
+		}
+		
+		ul li {
+				display: inline;
+				list-style: none;
+				background-repeat: no-repeat;
+			}
+			
+			li#small-logo {
+				width:100px;
+								
+				img {
+					width:100px;
+					height: auto;
+					position:relative;
+					top: -3px;
+					
+				}
+			}
+
+		#small-logo, #listen {
+			margin-right: 4px;
+			padding-right: 5px;
+			border-right: 2px ridge #999;
+		}
+	}
+
+	#midheader {
+		clear: both;
+		height: 129px; 
+		background-color: #FFF;
+		margin:auto;
+		
+		.barcontent {	
+			margin: auto;
+			width: 80%;
+		}
+	
+		img {
+			margin-top: 15px;
+		}
+		
+		#headerlogo {
+			padding-top: 17px;
+		}
+		
+		#headerbox {
+			float:right;
+		}
+	}
+}
+
+/* FOOTER SECTION */
+
+#stlpr-footer {
+	
+	#topfooter {
+		clear: both;
+		width: 100%;
+		margin-top:40px;
+	
+		.redbar {
+			width:100%;
+			background-color:darken(@stlpr-red, 8%);
+			height: 6px;
+			border-top: 2px solid #666;
+		}
+		
+		#partnersbar {
+			width: 100%;
+			height: 60px;
+			background-color: #000;
+			padding: 10px 0px 10px 0px;
+			
+			.logos {
+				width: 80%;
+				height: auto;
+				margin: 0 auto 0 auto;
+			
+				#partnerlogos {
+					float:right;
+					
+					img {
+						margin-left: 5px;
+					}
+					
+					:first-child {
+						margin:0px;
+					}
+				}	
+				
+			}
+			
+		}
+		
+	}
+	
+	#midfooter {
+
+		clear: both;
+		background-color:#333;
+		padding-bottom: 15px;
+		
+		.row {
+			margin: 0px
+		}
+
+		.stripes {
+			width: 100%;
+			height: 10px;
+			background: repeating-linear-gradient(
+			  45deg,
+			  #666 ,
+			  #666 1px,
+			  transparent 1px,
+			  transparent 4px
+				);
+				transform: transform(0,0,0);
+				backface-visibility:hidden;
+			}
+
+		h4 {
+			color:#CCC;
+			font-size:16px;
+			font-weight:700;
+			text-transform:uppercase;
+			text-align:left;
+		}
+		
+		p {
+			font-size: 12px;
+			color: #ccc;
+			padding: 2px 0px 10px 0px;
+		}
+		
+		a	{
+			text-decoration: none;
+			color: #ccc;
+		
+			:hover {
+				text-decoration: underline;
+			}
+		}
+		
+		ul {
+			font-size:13px;
+			color:#CCC;
+			font-weight:700;
+			line-height:15px;
+			padding: 0px;
+			margin: 0px;
+			display:block;
+
+			li {
+				font-size:13px;
+				color:#CCC;
+				font-weight:700;
+				line-height:15px;
+				margin:5px 0;
+				text-align:left;
+				list-style-type:none;
+				
+				
+			}
+			
+			ul {
+				li {
+					font-size:11px;
+					font-weight: 300;
+					padding:0 0 0 18px;
+				}
+			}
+
+		}
+
+		
+	}	
+	
+	#bottomfooter {
+		clear: both;
+		background-color: #000;
+		height: 112px;
+		
+		ul {
+			list-style: none;
+			text-align: center; 
+			font-size: 13px;
+			color: #999;
+			padding: 10px 0 10px 0;
+			text-decoration: none;
+			
+			li{
+				display: inline;
+				padding: 0 15px 0px 0px;
+				color: #999;
+			}
+		}
+		
+		a {
+		color: #999;
+		
+			:hover {
+				text-decoration: underline;
+			}
+			
+			&.contact { 
+				color: #FFF; 
+				font-weight: 700; 
+			}	
+		}
+		
+		#umsl {
+			float: left;
+			width: 350px;
+			margin: auto;
+			padding: 0px 15px 0px 30px;
+			font-size: 10px;
+			color: #999;
+			
+			img {
+				margin-right: 5px;
+				position: relative;
+				top: 4px;
+			}
+
+			p {
+				line-height: 1.2em;
+				margin-top: 0px;
+				
+				strong {
+					font-weight: 700;
+					color: #aaa;
+				}
+			}
+		}
+
+		#legal {
+			float: right;
+			margin-top: 10px;
+	
+			ul {
+				padding: 0px;
+			}
+		}
+	}
+	
+}
+

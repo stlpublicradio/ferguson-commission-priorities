@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- CHARTBEAT -->
+    <script type="text/javascript">
+        var _sf_startpt=(new Date()).getTime();
+    </script>
+
+    <title>{{ COPY.content.project_name }}</title>
+
+    <!-- META TAGS -->
+    {% include '_meta.html' %}
+
+    <!-- FONTS -->
+    {% include '_fonts.html' %}
+
+    <!-- CSS -->
+	{{ CSS.push('less/app.less') }}
+    {% block extra_css %}
+	{% endblock extra_css %}
+    {{ CSS.render('css/app.min.css') }}
+
+    <!-- JS -->
+    {{ JS.push('js/lib/modernizr.js') }}
+    {{ JS.push('js/lib/retina.min.js') }}
+	{{ JS.render('js/app-header.min.js') }}
+
+    {% include '_social_tags.html' %}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+</head>
+<body>
+    <!-- ANALYTICS JAVASCRIPT -->
+    {{ JS.push('js/app_config.js') }}
+    {{ JS.push('js/analytics.js') }}
+    {{ JS.render('js/app-header.min.js') }}
+
+    <a class="sr-only" href="#content">Skip To Content</a>
+
+    {% block outer_content %}
+
+	{% include '_header.html' %}
+
+    <section id="content">
+                <div id="main-content">
+                    {% block content %}
+                    <h1>{{ project_name }}</h1>
+                    App content goes here.
+
+                    <i class="icon icon-play"></i>
+                    {% endblock content %}
+                </div>
+            {% block wide_content %}
+            {% endblock wide_content %}
+    </section>
+
+    {% include '_footer.html' %}
+
+
+    {% endblock outer_content %}
+
+    {{ JS.push('js/lib/jquery.js') }}
+    {{ JS.push('js/lib/underscore.js') }}
+    {{ JS.push('js/lib/modernizr.js') }}
+    {{ JS.push('js/lib/bootstrap.js') }}
+    {{ JS.push('js/lib/moment.js') }}
+
+    {# commented out ZeroClipboard.js - bj 2015-07-14 #}
+    {# {{ JS.push('js/lib/ZeroClipboard.js') }} #}
+
+    {# uncomment both files to use simpleStorage #}
+    {# {{ JS.push('js/lib/simpleStorage.js') }} #}
+    {# {{ JS.push('js/storage.js') }} #}
+
+    {% if RELOAD_TRIGGER %}
+    {{ JS.push('js/reload.js') }}
+    {% endif %}
+
+    {{ JS.push('js/copy.js') }}
+    {{ JS.push('js/templates.js') }}
+    {{ JS.push('js/app.js') }}
+    {% block extra_foot_js %}{% endblock extra_foot_js %}
+    {{ JS.render('js/app-footer.min.js') }}
+
+    {% block extra_foot %}
+    {% endblock extra_foot %}
+
+</body>
+</html>

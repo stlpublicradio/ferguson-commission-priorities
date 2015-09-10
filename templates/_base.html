@@ -18,12 +18,17 @@
     <!-- CSS -->
 	{{ CSS.push('less/app.less') }}
     {% block extra_css %}
+    <link rel='stylesheet' type="text/css" href="css/dragula.css">
 	{% endblock extra_css %}
     {{ CSS.render('css/app.min.css') }}
 
     <!-- JS -->
+    {{ JS.push('js/lib/dragula.js') }}
+
     {{ JS.push('js/lib/modernizr.js') }}
     {{ JS.push('js/lib/retina.min.js') }}
+    {{ JS.push('js/lib/jquery.js') }}
+
 	{{ JS.render('js/app-header.min.js') }}
 
     {% include '_social_tags.html' %}
@@ -61,7 +66,6 @@
 
     {% endblock outer_content %}
 
-    {{ JS.push('js/lib/jquery.js') }}
     {{ JS.push('js/lib/underscore.js') }}
     {{ JS.push('js/lib/modernizr.js') }}
     {{ JS.push('js/lib/bootstrap.js') }}

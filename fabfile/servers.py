@@ -31,7 +31,7 @@ def setup():
 
         return
 
-    install_google_oauth_creds()
+    # install_google_oauth_creds()
     create_directories()
     create_virtualenv()
     clone_repo()

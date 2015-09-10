@@ -48,13 +48,13 @@ DEFAULT_MAX_AGE = 20
 RELOAD_TRIGGER = False
 RELOAD_CHECK_INTERVAL = 60
 
-# PRODUCTION_SERVERS = ['cron.nprapps.org']
-# STAGING_SERVERS = ['cron-staging.nprapps.org']
+PRODUCTION_SERVERS = ['ec2-54-173-91-84.compute-1.amazonaws.com']
+STAGING_SERVERS = ['ec2-54-173-91-84.compute-1.amazonaws.com']
 
 # Should code be deployed to the web/cron servers?
 DEPLOY_TO_SERVERS = False
 
-SERVER_USER = 'ubuntu'
+SERVER_USER = 'apps'
 SERVER_PYTHON = 'python2.7'
 SERVER_PROJECT_PATH = '/home/%s/apps/%s' % (SERVER_USER, PROJECT_FILENAME)
 SERVER_REPOSITORY_PATH = '%s/repository' % SERVER_PROJECT_PATH
@@ -91,7 +91,7 @@ DEBUG = True
 """
 COPY EDITING
 """
-COPY_GOOGLE_DOC_KEY = '0AlXMOHKxzQVRdHZuX1UycXplRlBfLVB0UVNldHJYZmc'
+COPY_GOOGLE_DOC_KEY = '1e07t9tQ41FdLbQnDkZHsyJAKqFVYya-Zj6JsqkWlFJA'
 COPY_PATH = 'data/copy.xlsx'
 
 """

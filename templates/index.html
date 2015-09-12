@@ -3,19 +3,19 @@
 
 {% block content %}
 
-<div id="left">
+<div class="col-md-5" id="left">
   <p>Prioritize here:</p>
 </div>
-<div id="right">
+<div class="col-md-5" id="right">
   {% for row in COPY.priorities_1 %}
   <div class="priority" data-id="{{ row.id }}">
     <h2>{{ row.short_name }}</h2>
-    <p>{{ row.details }}</p>
+    <p class="details">{{ row.details }}</p>
   </div>
   {% endfor %}
 </div>
 
-<div id="submit">
+<div id="submit" class="col-md-2">
 <div id="form" style="display:none;"><form/></div>
 <iframe style="display:none;" name="hidden_iframe" id="hidden_iframe"></iframe>
 

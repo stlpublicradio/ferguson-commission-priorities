@@ -90,7 +90,15 @@ function displayResults() {
     });
 
     // remove div with submit stuff in it
-    $('#submit').remove();
+    $('#submit').hide();
+
+    // expand all details
+
+    var details = $('body').find('.details');
+    details.trunk8('revert');
+
+    compileData();
+
 
 }
 

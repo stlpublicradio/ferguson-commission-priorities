@@ -144,18 +144,33 @@ function visualizeit(){
             }
             templist[j] = n;
         }
-        placements[i] = templist;
+        placements.push({
+            key: i+1,
+            value: templist
+        });
     }
 
-    var priority_divs = d3.select('#left').selectAll('.priority').append('div')
-    .datum(function(d) { return d3.select(this.parentNode).attr("data-id"); })
+    $('.priority').each(function(){
+        $( this ).append( $('<div class="chart" id="chart-' + $(this).attr('data-id') + '">') );
 
-    console.log(priority_divs)
+    });
 
-    priority_divs.data(placements, function(d) { return priority_divs.attr("data-id");});
+    for (i = 0; i < how_many_props; i++){
+        target = '#chart-' + (i+1)
+        console.log(target)
+        renderColumnChart({
+        container: target,
+        width: 100,
+        data: placements[i].value
+        });
+    }
 
-    console.log(priority_divs)
 
+
+    // var priority_divs = d3.select('#left').selectAll('.priority').append('div')
+    // .datum(function(d) { return {key: +d3.select(this.parentNode).attr("data-id")}; })
+    //
+    // priority_divs.data(placements, function(d) { return d.key });
 
 }
 

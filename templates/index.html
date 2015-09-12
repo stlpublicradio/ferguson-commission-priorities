@@ -27,12 +27,10 @@
 
 <script type="text/javascript">
 // Testing purposes; remove for production
-// localStorage.removeItem('priorities');
+localStorage.removeItem('priorities');
 
 var input_data;
 var data;
-
-compileData();
 
 pageInit();
 
@@ -72,8 +70,6 @@ function setUpPage() {
 }
 
 function displayResults() {
-    console.log("already submitted!")
-
     // list priorities in previously-submitted order
     priorities = $.parseJSON(localStorage.getItem('priorities'))
 
@@ -115,7 +111,7 @@ function compileData() {
 
 function visualizeit(){
 
-    var how_many_props = 11;
+    var how_many_props = {{ COPY.priorities_1|length }};
     var data = new Array();
     var placements = new Array();
 
@@ -188,11 +184,9 @@ function pageInit(){
 
 };
 
-
 function submitForm() {
     $.getJSON("js/config.json",initFromConfig);
 }
-
 
 function setUpDragging() {
     var drake = dragula([document.getElementById('left'), document.getElementById('right')]);

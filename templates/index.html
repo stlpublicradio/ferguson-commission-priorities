@@ -15,26 +15,137 @@
   {% endfor %}
 </div>
 
+<div id="submit">
 <div id="form" style="display:none;"><form/></div>
 <iframe style="display:none;" name="hidden_iframe" id="hidden_iframe"></iframe>
 
 <h3>All done?</h3>
+</div>
 
-<input name="submitButton"
-    value="Submit"
-    type="button"
-    onclick="submitForm();" />
 
 
 
 <script type="text/javascript">
-dragula([document.getElementById('left'), document.getElementById('right')]);
+// Testing purposes; remove for production
+// localStorage.removeItem('priorities');
 
-localStorage.removeItem('priorities');
+var input_data;
+var data;
 
+compileData();
+
+pageInit();
+
+function setUpPage() {
+    setUpDragging();
+    $('#main-content').append('<input name="submitButton" value="Submit" type="button" onclick="submitForm();" />');
+}
+
+function displayResults() {
+    console.log("already submitted!")
+
+    // list priorities in previously-submitted order
+    priorities = $.parseJSON(localStorage.getItem('priorities'))
+
+    $.each(priorities, function(i, item) {
+        var pri = $('div').find('[data-id="' + item.id + '"]');
+        pri.detach();
+        $('#left').append(pri);
+    });
+
+    // move other unsubmitted priorities to bottom of list
+    $("#right div").each(function(i) {
+        $(this).detach();
+        $('#left').append($(this));
+    });
+
+    // remove div with submit stuff in it
+    $('#submit').remove();
+
+}
+
+// load all users' data
+
+function compileData() {
+    d3.json("test.js", function(error, json) {
+      if (error) return console.warn(error);
+      input_data = json;
+      visualizeit();
+    });
+
+};
+
+function visualizeit(){
+
+    var how_many_props = 11;
+    var data = new Array();
+    var placements = new Array();
+
+    // splitting entries json up into usable lists
+    $.each(input_data.feed.entry, function(i,entry){
+        var templist = new Array();
+        entries = entry.content.$t;
+        entries = entries.split(',');
+
+        $.each(entries,function(j,listItem){
+            listItem = listItem.split(': ');
+            listItem = listItem[1];
+            templist[j] = listItem;
+        })
+
+        data[i] = templist;
+    })
+
+    // get totals by placement
+    for (i = 0; i < how_many_props; i++) {
+        templist = [];
+        for ( j = 0; j < how_many_props; j++) {
+            n = 0;
+            for ( k = 0; k < data.length; k++) {
+                n = n + (data[k][j] == i+1);
+            }
+            templist[j] = n;
+        }
+        placements[i] = templist;
+    }
+
+    var priority_divs = d3.select('#left').selectAll('.priority').append('div')
+    .datum(function(d) { return d3.select(this.parentNode).attr("data-id"); })
+
+    console.log(priority_divs)
+
+    priority_divs.data(placements, function(d) { return priority_divs.attr("data-id");});
+
+    console.log(priority_divs)
+
+
+}
+
+function pageInit(){
+    //Don't populate the form or set listeners if they already submitted
+     try {
+       //If they've already submitted, don't let them resubmit
+       if (localStorage.getItem('priorities')) {
+         displayResults();
+       }
+       else {
+           setUpPage();
+       }
+     } catch (e) {}
+
+};
+
+
+function submitForm() {
+    $.getJSON("js/config.json",initFromConfig);
+}
+
+
+function setUpDragging() {
+    var drake = dragula([document.getElementById('left'), document.getElementById('right')]);
+}
 
 function getFormElement(item) {
-
     var $el,
         $outer = $('<div></div>')
                   .addClass('fs-form-item')
@@ -121,14 +232,10 @@ function initFromConfig(config) {
          .attr('target', 'hidden_iframe')
          .attr('onsubmit', 'submitted=true');
 
-
    //Create the form fields
    $.each(config.fields || [],function(i,f){
-
      $form.append(getFormElement(f));
-
    });
-
 
    // fill out form
    var elements = [];
@@ -141,7 +248,7 @@ function initFromConfig(config) {
    $form = $('form');
 
    $inputs.filter('input').each(function(i, input){
-console.log(input)
+
 
        if (priorities[i]) {
            var number = priorities[i].id;
@@ -159,14 +266,6 @@ console.log(input)
   //put priorities into localStorage to mark that they submitted it
   localStorage.setItem('priorities',JSON.stringify(priorities));
 } catch(e) {}
-
-
- }
-
-
-submitForm = function() {
-
-    $.getJSON("js/config.json",initFromConfig);
 }
 
 </script>

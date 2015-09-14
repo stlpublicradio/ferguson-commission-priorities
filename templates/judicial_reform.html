@@ -1,0 +1,47 @@
+{% extends '_base.html' %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>{{COPY.content.priorities_2_title}}</h1>
+        <p>{{COPY.content.priorities_2_description}}</p>
+<div class="row">
+    <div class="col-md-6" id="container-priorities">
+      <h3>Prioritize here:</h3>
+      <div id="container-priorities-inner">
+          <p class="instructions">{{COPY.content.instructions}}</p>
+          <div id="left" class="border-dashed">
+          </div>
+          <div id="submit">
+          <div style="display:none" id="form"><form/></div>
+          <iframe style="display:none" name="hidden_iframe" id="hidden_iframe"></iframe>
+          <h3>All done?</h3>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-6" id="container-recommendations">
+        <h3>{{COPY.content.priorities_2_title}} Signature Recommendations</h3>
+        <div id="right">
+          {% for row in COPY.priorities_2 %}
+          <div class="priority" data-id="{{ row.id }}">
+            <h2>{{ row.short_name }}</h2>
+            <div class="priority-text">
+                <p class="details">{{ row.details }}</p>
+                    {% if row.accountable %}
+                    <span class="accountable">{{ row.accountable }}</span>
+                    {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var stored_priorities = "stlpr_fergusoncommission_judicial_reform";
+var how_many_props = '{{ COPY.priorities_2|length }}';
+var chart_explainer_text = '<div class="chart-explainer"><h4>{{ COPY.content.chart_explainer_head }}</h4><p>{{ COPY.content.chart_explainer_body }}</p></div>';
+var config = "js/priorities_2.json";
+var resultsData = "results_2.json";
+</script>
+{% endblock %}

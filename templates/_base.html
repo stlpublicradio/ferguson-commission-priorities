@@ -28,8 +28,7 @@
     {{ JS.push('js/lib/modernizr.js') }}
     {{ JS.push('js/lib/retina.min.js') }}
     {{ JS.push('js/lib/jquery.js') }}
-    {{ JS.push('js/lib/d3.js')}}
-    {{ JS.push('js/lib/trunk8.js') }}
+    {{ JS.push('js/lib/collapser.js') }}
 
 
 	{{ JS.render('js/app-header.min.js') }}
@@ -37,6 +36,7 @@
     {% include '_social_tags.html' %}
 
     {% block extra_head %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
     {% endblock extra_head %}
 </head>
 <body>

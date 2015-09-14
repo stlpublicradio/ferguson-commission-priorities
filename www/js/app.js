@@ -15,9 +15,6 @@ var onDocumentLoad = function(e) {
 
 $(onDocumentLoad);
 
-// Testing purposes; remove for production
-localStorage.removeItem(stored_priorities);
-
 var input_data;
 var data;
 var drake;

@@ -48,8 +48,8 @@ DEFAULT_MAX_AGE = 20
 RELOAD_TRIGGER = False
 RELOAD_CHECK_INTERVAL = 60
 
-PRODUCTION_SERVERS = ['ec2-54-173-91-84.compute-1.amazonaws.com']
-STAGING_SERVERS = ['ec2-54-173-91-84.compute-1.amazonaws.com']
+PRODUCTION_SERVERS = ['']
+STAGING_SERVERS = ['']
 
 # Should code be deployed to the web/cron servers?
 DEPLOY_TO_SERVERS = False

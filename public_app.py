@@ -37,7 +37,7 @@ def _test_app():
 
     return make_response(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
-# Example of rendering index.html with public_app 
+# Example of rendering index.html with public_app
 @app.route ('/%s/' % app_config.PROJECT_SLUG, methods=['GET'])
 def index():
     """
@@ -49,6 +49,18 @@ def index():
         context['featured'] = json.load(f)
 
     return make_response(render_template('index.html', **context))
+
+@app.route ('/%s/judicial_reform.html' % app_config.PROJECT_SLUG, methods=['GET'])
+def judicial():
+    """
+    Example view rendering a simple page.
+    """
+    context = make_context(asset_depth=1)
+
+    with open('data/featured.json') as f:
+        context['featured'] = json.load(f)
+
+    return make_response(render_template('judicial_reform.html', **context))
 
 # Enable Werkzeug debug pages
 if app_config.DEBUG:

@@ -35,6 +35,71 @@ def index():
 
     return make_response(render_template('index.html', **context))
 
+@app.route('/police_reform.html')
+@oauth.oauth_required
+def police():
+    """
+    Example view demonstrating rendering a simple HTML page.
+    """
+    context = make_context()
+
+    with open('data/featured.json') as f:
+        context['featured'] = json.load(f)
+
+    return make_response(render_template('police_reform.html', **context))
+
+@app.route('/judicial_reform.html')
+@oauth.oauth_required
+def judicial():
+    """
+    Example view demonstrating rendering a simple HTML page.
+    """
+    context = make_context()
+
+    with open('data/featured.json') as f:
+        context['featured'] = json.load(f)
+
+    return make_response(render_template('judicial_reform.html', **context))
+
+@app.route('/youth.html')
+@oauth.oauth_required
+def youth():
+    """
+    Example view demonstrating rendering a simple HTML page.
+    """
+    context = make_context()
+
+    with open('data/featured.json') as f:
+        context['featured'] = json.load(f)
+
+    return make_response(render_template('youth.html', **context))
+
+@app.route('/thrive.html')
+@oauth.oauth_required
+def thrive():
+    """
+    Example view demonstrating rendering a simple HTML page.
+    """
+    context = make_context()
+
+    with open('data/featured.json') as f:
+        context['featured'] = json.load(f)
+
+    return make_response(render_template('thrive.html', **context))
+
+@app.route('/equity')
+@oauth.oauth_required
+def equity():
+    """
+    Example view demonstrating rendering a simple HTML page.
+    """
+    context = make_context()
+
+    with open('data/featured.json') as f:
+        context['featured'] = json.load(f)
+
+    return make_response(render_template('equity.html', **context))
+
 @app.route('/widget.html')
 def widget():
     """

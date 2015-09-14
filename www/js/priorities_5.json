@@ -1,0 +1,35 @@
+{
+    "options": {
+        "dataSource": {
+            "url": "1e07t9tQ41FdLbQnDkZHsyJAKqFVYya-Zj6JsqkWlFJA",
+            "type": "google"
+        }
+    },
+    "dataDestination": "https://docs.google.com/forms/d/1tKJ-IpqH9YWXIQ_969026kSdH-v7pes0fRomdjtslN0/formResponse",
+    "fields": [
+        {
+            "name": "priority_1",
+            "required": false,
+            "type": "text",
+            "field": "entry.104760831"
+        },
+        {
+            "name": "priority_2",
+            "required": false,
+            "type": "text",
+            "field": "entry.2011905458"
+        },
+        {
+            "name": "priority_3",
+            "required": false,
+            "type": "text",
+            "field": "entry.951531652"
+        },
+        {
+            "name": "priority_4",
+            "required": false,
+            "type": "text",
+            "field": "entry.1841309334"
+        }
+    ]
+}

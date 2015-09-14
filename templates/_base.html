@@ -59,10 +59,20 @@
                     {% block content %}
 
                     {% endblock content %}
+                    <div class="row" style="margin-top:30px;">
+                        <div class="col-sm-12">
+                            <div class="well" style="text-align:center">
+                                <h4><a href="{{COPY.content.pin_link}}" target="_blank">{{COPY.content.pin_pitch}}</a></h4>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             {% block wide_content %}
             {% endblock wide_content %}
     </section>
+
+    {% include '_share_modal.html' %}
 
     {% include '_footer.html' %}
 

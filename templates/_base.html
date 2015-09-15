@@ -38,10 +38,6 @@
     {% endblock extra_head %}
 </head>
 <body>
-    <!-- ANALYTICS JAVASCRIPT -->
-    {{ JS.push('js/app_config.js') }}
-    {{ JS.push('js/analytics.js') }}
-    {{ JS.render('js/app-header.min.js') }}
 
     <a class="sr-only" href="#content">Skip To Content</a>
 
@@ -77,6 +73,7 @@
 
     {% endblock outer_content %}
 
+    {{ JS.push('js/app_config.js') }}
     {{ JS.push('js/lib/underscore.js') }}
     {{ JS.push('js/lib/modernizr.js') }}
     {{ JS.push('js/lib/bootstrap.js') }}
@@ -95,6 +92,8 @@
 
     {{ JS.push('js/copy.js') }}
     {{ JS.push('js/templates.js') }}
+    {{ JS.push('js/analytics.js') }}
+
     {{ JS.push('js/app.js') }}
     {% block extra_foot_js %}{% endblock extra_foot_js %}
     {{ JS.render('js/app-footer.min.js') }}

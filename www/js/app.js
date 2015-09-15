@@ -19,6 +19,9 @@ var input_data;
 var data;
 var drake;
 
+var priorities = $.parseJSON(localStorage.getItem(stored_priorities));
+
+
 function setUpPage() {
     $.getJSON(config,initFromConfig);
     setUpDragging();
@@ -46,9 +49,6 @@ function displayResults() {
     })
 
     // list priorities in previously-submitted order
-    priorities = $.parseJSON(localStorage.getItem(stored_priorities))
-
-
 
     $.each(priorities, function(i, item) {
         var pri = $('div').find('[data-id="' + item.id + '"]');
@@ -144,11 +144,18 @@ function visualizeit(){
         renderColumnChart({
         container: target,
         width: containerWidth,
-        data: placements[i].value
+        data: placements[i].value,
         });
     }
 
     $('.chart').first().prepend(chart_explainer_text);
+
+    for (i = 1; i <= priorities.length; i++){
+        barvar = i - 1
+        $("#left .row:nth-child(" + i + ")").find(".bar:nth-child(" + i + ")").each(function(){
+            $(this).attr("class", "myplacement bar bar-" + barvar)
+        });
+    }
 
 
 
@@ -467,7 +474,12 @@ var renderColumnChart = function(config) {
                 return yScale(0) - yScale(d);
             })
             .attr('class', function(d, i) {
-                return 'bar bar-' + i;
+                if (config.myplacement - 1 == i) {
+                    return 'myplacement bar bar-' + i;
+                }
+                else {
+                    return 'bar bar-' + i
+                }
             });
 
     /*
